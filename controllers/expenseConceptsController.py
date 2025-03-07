@@ -48,7 +48,7 @@ def OdooSaleOrderTool(ENDPOINT_ODOO='http://yokosuka.odoo.com',
                     [["partner_id", "=", 68002], ["move_type", "=", "out_invoice"]]
                 ],
                 "kwargs": {
-                    "fields": ["id", "name", "invoice_date", "state", "amount_total", "currency_id"],
+                    "fields": ["id", "name", "invoice_date", "state", "amount_total", "currency_id","invoice_date_due"],
                     "limit": 100
                 }
             }

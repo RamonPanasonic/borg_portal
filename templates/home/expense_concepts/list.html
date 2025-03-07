@@ -59,6 +59,7 @@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Fecha de factura</th>
+                    <th>Fecha tentativa de pago</th>
                     <th>Total</th>
                     <th>Divisa</th>
                     <th>Estado</th>
@@ -70,6 +71,7 @@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Fecha de factura</th>
+                    <th>Fecha tentativa de pago</th>
                     <th>Total</th>
                     <th>Divisa</th>
                     <th>Estado</th>
@@ -141,6 +143,7 @@ function update_table(data) {
         expense_concept.push(element.id);
         expense_concept.push(element.name);
         expense_concept.push(element.invoice_date);
+        expense_concept.push(element.invoice_date_due);
         expense_concept.push('$ ' + formatNumber(element.amount_total));  // Agregado formateo de número
         expense_concept.push(element.currency_id[1]);
         expense_concept.push(element.state);
@@ -163,6 +166,7 @@ function update_table(data) {
             {title: "ID"},
             {title: "Nombre"},
             {title: "Fecha de factura"},
+            {title: "Fecha tentativa de pago"},
             {title: "Total"},
             {title: "Divisa"},
             {title: "Estado"}
