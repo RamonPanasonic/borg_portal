@@ -36,6 +36,11 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
+<!-- Contenedor de Cargando (Oculto por defecto) -->
+<div id="loadingMessage" style="display:none; text-align: center; margin-top: 20px;">
+    <i class="fas fa-spinner fa-spin" style="font-size: 3rem;"></i>
+    <p>Cargando...</p>
+</div>
 
     <!-- Main content -->
     <section class="content">
@@ -111,39 +116,44 @@
   <!-- page script -->
 
   <script>
-     $(function() {
-      get_data('/expense-concepts/get-yoko')
-    });
+$(function() {
+    get_data('/expense-concepts/get-yoko');
+});
 
-     /*Funtion to get de data in json and pass to the datatable*/
 function get_data(url) {
-        $.getJSON(url, function (data) {
-                update_table(data.data)
-            }
-        );
-    }
+    // Mostrar el mensaje de carga
+    $("#loadingMessage").show();
 
-/*Funtion to generate de datatable and fill whit de json data */
+    // Realizar la llamada a la API para obtener los datos
+    $.getJSON(url, function (data) {
+        // Una vez que se obtienen los datos, actualizar la tabla
+        update_table(data.data);
+
+        // Ocultar el mensaje de carga
+        $("#loadingMessage").hide();
+    });
+}
 
 function update_table(data) {
-    let expense_concepts = []
+    let expense_concepts = [];
     $.each(data, function (i, element) {
-        let expense_concept = []
-        expense_concept.push(element.id)
-        expense_concept.push(element.name)
-        expense_concept.push(element.invoice_date)
-        expense_concept.push('$ '+element.amount_total)
-        expense_concept.push(element.currency_id[1])
-        expense_concept.push(element.state)
-        expense_concepts.push(expense_concept)
-    })
+        let expense_concept = [];
+        expense_concept.push(element.id);
+        expense_concept.push(element.name);
+        expense_concept.push(element.invoice_date);
+        expense_concept.push('$ ' + formatNumber(element.amount_total));  // Agregado formateo de número
+        expense_concept.push(element.currency_id[1]);
+        expense_concept.push(element.state);
+        expense_concepts.push(expense_concept);
+    });
+
     $('#datatable_list').DataTable().clear();
     $('#datatable_list').DataTable().destroy();
     $('#datatable_list').DataTable({
         dom: 'lBfrtip',
-          "buttons": [
+        "buttons": [
             'excel'
-          ],
+        ],
         responsive: true,
         language: {
             url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json',
@@ -160,6 +170,13 @@ function update_table(data) {
     });
 }
 
+// Función para formatear el número con separadores de miles y decimales
+function formatNumber(number) {
+    return new Intl.NumberFormat('es-ES', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(number);
+}
 
   </script>
 
