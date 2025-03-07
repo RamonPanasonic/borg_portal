@@ -1,0 +1,83 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <div class="brand-link">
+    <span class="brand-text font-weight-light logo-text"><strong>GRUPO BORGWARNER EL SALTO</strong></span>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img src="/static/assets/img/user_image.jpg" class="img-circle" alt="User Image">
+      </div>
+      <div class="info">
+        <a href="/logout" class="d-block">{{ current_user.name }} <br><small>(Cerrar sesión)</small></a>
+      </div>
+    </div>
+
+    <!-- SidebarSearch Form -->
+    <div class="form-inline">
+      <div class="input-group" data-widget="sidebar-search">
+        <input class="form-control form-control-sidebar" type="search" placeholder="Buscar en menú" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-sidebar">
+            <i class="fas fa-search fa-fw"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+            <p class="nav-link">Ingreso de facturas</p>
+        </li>
+        <li class="nav-item">
+          <a href="/expense-concepts/all" class="nav-link">
+            <p>Consulta de facturas</p>
+          </a>
+        </li>
+        <li class="nav-item">
+            <p class="nav-link">Consulta de complementos de pago</p>
+        </li>
+        <li class="nav-item">
+            <p class="nav-link">Ayuda</p>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
+
+<!-- Inline CSS for the logo text adjustment -->
+<style>
+/* Ajustar el tamaño del texto y permitir que se ajuste */
+.brand-link {
+  display: flex;
+  justify-content: center;  /* Centra el contenido */
+  align-items: center;      /* Alinea verticalmente */
+  white-space: normal;      /* Permite que el texto se ajuste a la línea */
+  text-overflow: ellipsis;  /* Agrega puntos suspensivos si el texto es demasiado largo */
+  overflow: hidden;         /* Oculta el texto que sobrepasa el contenedor */
+  max-width: 100%;          /* Asegura que el contenedor ocupe el ancho completo disponible */
+}
+
+.brand-text {
+  font-size: 1.25rem;        /* Tamaño de fuente más pequeño, ajusta según sea necesario */
+  line-height: 1.5;          /* Espaciado entre líneas */
+  text-align: center;        /* Alineación centrada */
+  word-wrap: break-word;     /* Permite que el texto se ajuste en varias líneas si es necesario */
+  padding: 0 10px;           /* Agrega algo de espacio alrededor del texto */
+}
+
+/* Ajustar el texto en pantallas pequeñas */
+@media (max-width: 768px) {
+  .brand-text {
+    font-size: 1rem;  /* Reduce aún más el tamaño en pantallas pequeñas */
+  }
+}
+</style>
