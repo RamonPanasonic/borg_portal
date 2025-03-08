@@ -15,7 +15,7 @@ def addUser():
         if user:  # if a user is found, we want to redirect back to signup page so user can try again
             return make_response('El correo ya se encuentra registrado', 400)
         # create a new user with the form data. Hash the password so the plaintext version isn't saved.
-        new_user = Users(name=name,username=username,password=generate_password_hash(password, method='sha256'),role=role)
+        new_user = Users(name=name,username=username,password=generate_password_hash(password),role=role)
         # add the new user to the database
         db.session.add(new_user)
         db.session.commit()

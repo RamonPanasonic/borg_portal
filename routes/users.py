@@ -28,8 +28,6 @@ def users_crud():
     return addUser()
 
 @users.route('/list')
-@is_admin
-@login_required
 def users_list():
     users = Users.get_all()
     users = [user.to_dict() for user in users]

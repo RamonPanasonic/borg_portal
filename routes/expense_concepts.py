@@ -7,7 +7,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-expense_concepts = Blueprint('expense_concepts', __name__, url_prefix='/expense-concepts')
+expense_concepts = Blueprint('expense_concepts', __name__, url_prefix='/invoices')
 
 @expense_concepts.route('/all')
 @is_admin
