@@ -59,7 +59,7 @@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Fecha de factura</th>
-                    <th>Fecha tentativa de pago</th>
+                    <th>Fecha de pago</th>
                     <th>Total</th>
                     <th>Divisa</th>
                     <th>Estado</th>
@@ -71,7 +71,7 @@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Fecha de factura</th>
-                    <th>Fecha tentativa de pago</th>
+                    <th>Fecha de pago</th>
                     <th>Total</th>
                     <th>Divisa</th>
                     <th>Estado</th>
@@ -116,72 +116,6 @@
         <!-- Toastr -->
   <script src="/static/assets/plugins/toastr/toastr.min.js"></script>
   <!-- page script -->
-
-  <script>
-$(function() {
-    get_data('/invoices/get-yoko');
-});
-
-function get_data(url) {
-    // Mostrar el mensaje de carga
-    $("#loadingMessage").show();
-
-    // Realizar la llamada a la API para obtener los datos
-    $.getJSON(url, function (data) {
-        // Una vez que se obtienen los datos, actualizar la tabla
-        update_table(data.data);
-
-        // Ocultar el mensaje de carga
-        $("#loadingMessage").hide();
-    });
-}
-
-function update_table(data) {
-    let expense_concepts = [];
-    $.each(data, function (i, element) {
-        let expense_concept = [];
-        expense_concept.push(element.id);
-        expense_concept.push(element.name);
-        expense_concept.push(element.invoice_date);
-        expense_concept.push(element.invoice_date_due);
-        expense_concept.push('$ ' + formatNumber(element.amount_total));  // Agregado formateo de número
-        expense_concept.push(element.currency_id[1]);
-        expense_concept.push(element.state);
-        expense_concepts.push(expense_concept);
-    });
-
-    $('#datatable_list').DataTable().clear();
-    $('#datatable_list').DataTable().destroy();
-    $('#datatable_list').DataTable({
-        dom: 'lBfrtip',
-        "buttons": [
-            'excel'
-        ],
-        responsive: true,
-        language: {
-            url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json',
-        },
-        data: expense_concepts,
-        columns: [
-            {title: "ID"},
-            {title: "Nombre"},
-            {title: "Fecha de factura"},
-            {title: "Fecha tentativa de pago"},
-            {title: "Total"},
-            {title: "Divisa"},
-            {title: "Estado"}
-        ]
-    });
-}
-
-// Función para formatear el número con separadores de miles y decimales
-function formatNumber(number) {
-    return new Intl.NumberFormat('es-ES', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    }).format(number);
-}
-
-  </script>
+  <script src="/static/invoices.js"></script>
 
 {% endblock javascripts %}

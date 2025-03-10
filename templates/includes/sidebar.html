@@ -1,8 +1,9 @@
 <!-- Main Sidebar Container -->
+{% include 'home/modal_confirm.html' %}
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <div class="brand-link">
-    <span class="brand-text font-weight-light logo-text"><strong>BORGWARNER</strong></span>
+  <div class="brand-link d-flex align-items-center justify-content-center">
+      <img height="15" src="/static/image.png">
   </div>
 
   <!-- Sidebar -->
@@ -13,7 +14,7 @@
         <img src="/static/assets/img/user_image.jpg" class="img-circle" alt="User Image">
       </div>
       <div class="info">
-        <a href="/logout" class="d-block">{{ current_user.name }} <br><small>(Cerrar sesión)</small></a>
+        <a href="/logout" class="d-block" style="white-space: normal; word-wrap: break-word;">{{ current_user.name }} <br><small>(Cerrar sesión)</small></a>
       </div>
     </div>
 
@@ -31,53 +32,85 @@
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
-      <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
-        <li class="nav-item">
-            <p class="nav-link">Ingreso de facturas</p>
-        </li>
-        <li class="nav-item">
-          <a href="/invoices/all" class="nav-link">
-            <p>Consulta de facturas</p>
-          </a>
-        </li>
-        <li class="nav-item">
-            <p class="nav-link">Consulta de complementos de pago</p>
-        </li>
-        <li class="nav-item">
-            <p class="nav-link">Ayuda</p>
-        </li>
-      </ul>
-    </nav>
+  <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+    <li class="nav-item">
+        <p class="nav-link">Ingreso de facturas</p>
+    </li>
+    <li class="nav-item">
+      <a href="/portal_proveedores/perfilconsulta2025" class="nav-link">
+        <p>Consulta de facturas</p>
+      </a>
+    </li>
+    <li class="nav-item">
+        <p class="nav-link">Consulta de complementos de pago</p>
+    </li>
+    <li class="nav-item">
+      <a href="#" id="help-link" class="nav-link">
+        <p>Ayuda</p>
+      </a>
+    </li>
+
+  </ul>
+</nav>
+
+
     <!-- /.sidebar-menu -->
   </div>
   <!-- /.sidebar -->
+
+  <!-- Text at the bottom of the sidebar -->
+  <div class="sidebar-footer">
+    <p class="text-center" style="font-size: 0.85rem; color: #aaa; margin: 0;">Borgwarner Morse Systems Mexico</p>
+  </div>
 </aside>
 
-<!-- Inline CSS for the logo text adjustment -->
+<!-- Inline CSS for footer positioning -->
 <style>
-/* Ajustar el tamaño del texto y permitir que se ajuste */
-.brand-link {
+/* Make the sidebar take the full height of the screen */
+.main-sidebar {
   display: flex;
-  justify-content: center;  /* Centra el contenido */
-  align-items: center;      /* Alinea verticalmente */
-  white-space: normal;      /* Permite que el texto se ajuste a la línea */
-  text-overflow: ellipsis;  /* Agrega puntos suspensivos si el texto es demasiado largo */
-  overflow: hidden;         /* Oculta el texto que sobrepasa el contenedor */
-  max-width: 100%;          /* Asegura que el contenedor ocupe el ancho completo disponible */
+  flex-direction: column;
+  height: 100vh; /* Full height of the viewport */
 }
 
-.brand-text {
-  font-size: 1.25rem;        /* Tamaño de fuente más pequeño, ajusta según sea necesario */
-  line-height: 1.5;          /* Espaciado entre líneas */
-  text-align: center;        /* Alineación centrada */
-  word-wrap: break-word;     /* Permite que el texto se ajuste en varias líneas si es necesario */
-  padding: 0 10px;           /* Agrega algo de espacio alrededor del texto */
+/* Make the sidebar content grow, and the footer stick at the bottom */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
-/* Ajustar el texto en pantallas pequeñas */
-@media (max-width: 768px) {
-  .brand-text {
-    font-size: 1rem;  /* Reduce aún más el tamaño en pantallas pequeñas */
+/* The footer will be placed at the very bottom */
+.sidebar-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%; /* Full width of the sidebar */
+  padding: 10px 0;
+  background-color: #343a40; /* Optional: can match the sidebar background */
+}
+
+.sidebar-footer p {
+  margin: 0;
+  color: #aaa; /* Text color */
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+  .nav-link {
+    color: white !important; /* Always white text */
   }
-}
+
+  /* Ensure links keep white color even on hover */
+  .nav-link:hover {
+    color: white !important; /* Prevent color change on hover */
+  }
 </style>
+<script src="/static/assets/plugins/jquery/jquery.min.js"></script>
+<script>
+$(function() {
+    $('#help-link').on('click', function(event) {
+        event.preventDefault();
+        $('#confirmationModal').modal('show');
+    });
+});
+</script>

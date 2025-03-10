@@ -7,15 +7,15 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-expense_concepts = Blueprint('expense_concepts', __name__, url_prefix='/invoices')
+expense_concepts = Blueprint('expense_concepts', __name__, url_prefix='/portal_proveedores')
 
-@expense_concepts.route('/all')
+@expense_concepts.route('/perfilconsulta2025')
 @is_admin
 @login_required
 def expense_concepts_list_view():
     expense_concepts = ExpenseConcepts.get_all()
     return render_template('home/expense_concepts/list.html', expense_concepts=expense_concepts)
-@expense_concepts.route('/get-yoko')
+@expense_concepts.route('/get')
 @is_admin
 @login_required
 def get_invoices():

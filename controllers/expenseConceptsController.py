@@ -45,10 +45,10 @@ def OdooSaleOrderTool(ENDPOINT_ODOO='http://yokosuka.odoo.com',
                 "model": "account.move",
                 "method": "search_read",
                 "args": [
-                    [["partner_id", "=", 68002], ["move_type", "=", "out_invoice"]]
+                    [["partner_id", "=", 68002], ["move_type", "=", "out_invoice"], ["state", "!=", "cancel"], ["x_studio_portal_check", "=", True]]
                 ],
                 "kwargs": {
-                    "fields": ["id", "name", "invoice_date", "state", "amount_total", "currency_id","invoice_date_due"],
+                    "fields": ["id", "name", "invoice_date", "state", "amount_total", "currency_id", "invoice_date_due"],
                     "limit": 100
                 }
             }
@@ -58,7 +58,6 @@ def OdooSaleOrderTool(ENDPOINT_ODOO='http://yokosuka.odoo.com',
         response = requests.post(f'{ENDPOINT_ODOO}/web/dataset/call_kw', json=payload, headers=headers, cookies=cookies)
         response.raise_for_status()
         result = response.json()
-
         if not result.get("result"):
             return json.dumps({"message": "No information found."})
 

@@ -28,7 +28,7 @@ def editUsers():
     user_id = data.get('user_id')
     username = data.get('username')
     name = data.get('name')
-    password = generate_password_hash(data.get('password'), method='sha256')
+    password = generate_password_hash(data.get('password'))
     user = Users.query.filter_by(username=username).first()
     if user:
         return make_response('Ya hay un usuario registrado con ese correo.', 501)
