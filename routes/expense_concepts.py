@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 expense_concepts = Blueprint('expense_concepts', __name__, url_prefix='/portal_proveedores')
 
-@expense_concepts.route('/perfilconsulta2025')
+@expense_concepts.route('/perfilconsulta2025/consultas')
 @is_admin
 @login_required
 def expense_concepts_list_view():
@@ -20,3 +20,9 @@ def expense_concepts_list_view():
 @login_required
 def get_invoices():
     return OdooSaleOrderTool()
+
+@expense_concepts.route('/perfilconsulta2025')
+@is_admin
+@login_required
+def consultas_dashboard():
+    return render_template('home/dashboard.html')

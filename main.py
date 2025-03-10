@@ -12,5 +12,6 @@ def index():
 @main.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('home/dashboard.html')
+    return redirect(url_for('expense_concepts.consultas_dashboard'))
+
 
