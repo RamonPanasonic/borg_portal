@@ -26,7 +26,7 @@ function update_table(data) {
             expense_concept.push('')
         }
 
-        expense_concept.push('$ ' + element.amount_total.toLocaleString("es-MX"));
+        expense_concept.push('$ ' + element.amount_total.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
         expense_concept.push(element.currency_id[1]);
         if(element.payment_state == "not_paid"){
             expense_concept.push('En proceso')
@@ -46,27 +46,30 @@ function update_table(data) {
     $('#datatable_list').DataTable().clear();
     $('#datatable_list').DataTable().destroy();
     $('#datatable_list').DataTable({
-        dom: 'lBfrtip',
-        "buttons": [
-            'excel'
-        ],
-        responsive: true,
-        language: {
-            url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json',
-        },
-        data: expense_concepts,
-        columns: [
-            {title: "ID"},
-            {title: "Factura"},
-            {title: "Fecha de factura"},
-            {title: "Fecha estimada"},
-            {title: "Total"},
-            {title: "Divisa"},
-            {title: "Estado de pago"},
-            {title: "Estado de la factura"}
-        ],
-        order: [[1, 'desc']]
-    });
+    dom: 'lBfrtip',
+    buttons: ['excel'],
+    responsive: true,
+    language: {
+        url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json',
+    },
+    data: expense_concepts,
+    columns: [
+        { title: "ID" },
+        { title: "Factura" },
+        { title: "Fecha de factura" },
+        { title: "Fecha estimada" },
+        { title: "Total" },
+        { title: "Divisa" },
+        { title: "Estado de pago" },
+        { title: "Estado de la factura" }
+    ],
+    createdRow: function(row, data, dataIndex) {
+        $('td:eq(4)', row).css('text-align', 'right');
+    },
+    order: [[1, 'desc']]
+});
+
+
 }
 
 // Función para formatear el número con separadores de miles y decimales
