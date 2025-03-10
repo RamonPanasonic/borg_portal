@@ -23,13 +23,7 @@ function update_table(data) {
         expense_concept.push(element.invoice_date_due);
         expense_concept.push('$ ' + element.amount_total.toLocaleString("es-MX"));
         expense_concept.push(element.currency_id[1]);
-        if(element.state == 'draft'){
-            expense_concept.push('APPROVED');
-        }else if(element.state == 'posted') {
-            expense_concept.push('PAID')
-        }else{
-            expense_concept.push('-')
-        }
+        expense_concept.push('Aprobada')
         expense_concepts.push(expense_concept)
     });
 
