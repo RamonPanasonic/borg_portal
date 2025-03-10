@@ -43,7 +43,7 @@ function update_table(data) {
             {title: "ID"},
             {title: "Nombre"},
             {title: "Fecha de factura"},
-            {title: "Fecha de pago"},
+            {title: "Fecha estimada"},
             {title: "Total"},
             {title: "Divisa"},
             {title: "Estado"}
