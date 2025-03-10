@@ -52,7 +52,7 @@ function update_table(data) {
         data: expense_concepts,
         columns: [
             {title: "ID"},
-            {title: "Nombre"},
+            {title: "Factura"},
             {title: "Fecha de factura"},
             {title: "Fecha estimada"},
             {title: "Total"},
