@@ -32,34 +32,42 @@
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
-  <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
-    <li class="nav-item">
-      <a href="/portal_proveedores/perfilconsulta2025/consultas" class="nav-link">
-        <p>Consulta de facturas</p>
-      </a>
-    </li>
-    <li class="nav-item">
-        <p class="nav-link">Ingreso de facturas</p>
-    </li>
-    <li class="nav-item">
-        <p class="nav-link">Consulta de complementos de pago</p>
-    </li>
-    <li class="nav-item">
-      <a href="#" id="help-link" class="nav-link">
-        <p>Ayuda</p>
-      </a>
-    </li>
-  </ul>
-</nav>
-
+      <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <a href="/portal_proveedores/perfilconsulta2025/consultas" class="nav-link">
+            <p>Consulta de facturas</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" id="help-link" class="nav-link">
+            <p>Ayuda</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
 
     <!-- /.sidebar-menu -->
   </div>
   <!-- /.sidebar -->
 
   <!-- Text at the bottom of the sidebar -->
-  <div class="sidebar-footer">
-    <p class="text-center" style="font-size: 0.85rem; color: #aaa; margin: 0;">Borgwarner Morse Systems Mexico</p>
+  <div class="sidebar-footer text-start">
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <p class="nav-item" style="border-bottom: 1px solid gray;
+  padding-bottom: 10px;">Administrador</p>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link">Ingreso de facturas</p>
+          </li>
+          <li class="nav-item">
+            <p class="nav-link">Consulta de complementos de pago</p>
+          </li>
+        </ul>
+      </nav>
+
+    <p class="text-center" style="font-size: 0.85rem; color: #aaa; margin: 0; margin-top: 40px;">Borgwarner Morse Systems Mexico</p>
   </div>
 </aside>
 
@@ -94,19 +102,6 @@
   text-align: center;
   font-size: 0.85rem;
 }
-  /* Aplicar un borde solo entre el primer y el último li */
-/* Separador entre el primer y segundo li */
-.nav-item:nth-child(1) {
-  border-bottom: 1px solid gray;
-  padding-bottom: 10px;
-}
-
-/* Separador entre el tercer y cuarto li */
-.nav-item:nth-child(3) {
-  border-bottom: 1px solid gray;
-  padding-bottom: 3px;
-}
-
 
 </style>
 <script src="/static/assets/plugins/jquery/jquery.min.js"></script>

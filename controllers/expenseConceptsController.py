@@ -45,10 +45,17 @@ def OdooSaleOrderTool(ENDPOINT_ODOO='http://yokosuka.odoo.com',
                 "model": "account.move",
                 "method": "search_read",
                 "args": [
-                    [["partner_id", "=", 68002], ["move_type", "=", "out_invoice"], ["state", "!=", "cancel"], ["x_studio_portal_check", "=", True]]
+                    [
+                        "|",  # Este es el operador lógico "OR"
+                        ["partner_id", "=", 68002],  # Primera condición
+                        ["partner_id.parent_id", "=", 68002],  # Segunda condición
+                        ["move_type", "=", "out_invoice"],
+                        ["state", "!=", "cancel"],
+                        ["x_studio_portal_check", "=", True]
+                    ]
                 ],
                 "kwargs": {
-                    "fields": ["id", "name", "invoice_date", "state", "amount_total", "currency_id", "invoice_date_due"],
+                    "fields": ["id", "name", "invoice_date", "state", "payment_state", "amount_total", "currency_id", "invoice_date_due"],
                     "limit": 100
                 }
             }

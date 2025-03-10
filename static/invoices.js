@@ -23,6 +23,17 @@ function update_table(data) {
         expense_concept.push(element.invoice_date_due);
         expense_concept.push('$ ' + element.amount_total.toLocaleString("es-MX"));
         expense_concept.push(element.currency_id[1]);
+        if(element.payment_state == "not_paid"){
+            expense_concept.push('En proceso')
+        }else if(element.payment_state == "in_payment"){
+            expense_concept.push('En proceso de pago')
+        }else if(element.payment_state == "paid"){
+            expense_concept.push('Pagado')
+        }else if(element.payment_state == 'partial'){
+            expense_concept.push('Parcialmente pagado')
+        }else{
+            expense_concept.push(-'')
+        }
         expense_concept.push('Aprobada')
         expense_concepts.push(expense_concept)
     });
@@ -46,8 +57,10 @@ function update_table(data) {
             {title: "Fecha estimada"},
             {title: "Total"},
             {title: "Divisa"},
-            {title: "Estado"}
-        ]
+            {title: "Estado de pago"},
+            {title: "Estado de la factura"}
+        ],
+        order: [[1, 'desc']]
     });
 }
 
