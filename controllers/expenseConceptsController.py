@@ -65,6 +65,7 @@ def OdooSaleOrderTool(ENDPOINT_ODOO='http://yokosuka.odoo.com',
         response = requests.post(f'{ENDPOINT_ODOO}/web/dataset/call_kw', json=payload, headers=headers, cookies=cookies)
         response.raise_for_status()
         result = response.json()
+        print(result)
         if not result.get("result"):
             return json.dumps({"message": "No information found."})
 

@@ -33,7 +33,7 @@ function update_table(data) {
         }else{
             expense_concept.push('')
         }
-        if(expense_concept.x_studio_estado_de_la_factura){
+        if(element.x_studio_estado_de_la_factura){
             expense_concept.push(element.x_studio_estado_de_la_factura)
         }else{
             expense_concept.push('')
