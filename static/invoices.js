@@ -28,18 +28,17 @@ function update_table(data) {
 
         expense_concept.push('$ ' + element.amount_total.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
         expense_concept.push(element.currency_id[1]);
-        if(element.payment_state == "not_paid"){
-            expense_concept.push('En proceso')
-        }else if(element.payment_state == "in_payment"){
-            expense_concept.push('En proceso de pago')
-        }else if(element.payment_state == "paid"){
-            expense_concept.push('Pagado')
-        }else if(element.payment_state == 'partial'){
-            expense_concept.push('Parcialmente pagado')
+        if(element.x_studio_estado_de_pago){
+            expense_concept.push(element.x_studio_estado_de_pago)
         }else{
-            expense_concept.push(-'')
+            expense_concept.push('')
         }
-        expense_concept.push('Aprobada')
+        if(expense_concept.x_studio_estado_de_la_factura){
+            expense_concept.push(element.x_studio_estado_de_la_factura)
+        }else{
+            expense_concept.push('')
+        }
+
         expense_concepts.push(expense_concept)
     });
 

@@ -55,7 +55,7 @@ def OdooSaleOrderTool(ENDPOINT_ODOO='http://yokosuka.odoo.com',
                     ]
                 ],
                 "kwargs": {
-                    "fields": ["id", "name", "invoice_date", "state", "payment_state", "amount_total", "currency_id", "x_studio_fecha_de_pago"],
+                    "fields": ["id", "name", "invoice_date", "x_studio_estado_de_pago", "x_studio_estado_de_la_factura", "amount_total", "currency_id", "x_studio_fecha_de_pago"],
                     "limit": 100
                 }
             }
